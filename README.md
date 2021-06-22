@@ -17,6 +17,8 @@ The figure above shows the average test errors over the five independent runs re
 ![visual_of_errors_per_joint](https://user-images.githubusercontent.com/44982976/122838319-d5a8d780-d2c3-11eb-8901-807a72de69f3.png)
 The figure above is a visualization of the predicted locations of the dynamic joints of the double pendulum at three different instances by the DSRNN with k=3 and the LSTM. The highlighted regions corresponding to each recurrent network architecture are centered around the average prediction for each joint, corresponding to every {1, 5, 10, 15, 20} time-step prediction, T. The height and width of the circular regions are proportional in magnitude to 1 standard deviation of the x and y error predictions.
 
+**Dataset**
+
 The dataset can be found in the following reference:
     Asseman, A., T. Kornuta, and A. Ozcan (2018) “Learning beyond simulated physics,” in Modeling and Decision-making in the Spatiotemporal Domain Workshop.
     URL https://openreview.net/forum?id=HylajWsRF7
