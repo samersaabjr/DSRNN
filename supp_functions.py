@@ -1,5 +1,5 @@
 import tensorflow as tf
-from c_k_rnn import c_k_RNNCell
+from dsrnn import DSRNNCell
 import numpy as np
 import os
 
@@ -24,8 +24,6 @@ def get_batches(X, Y, n_steps, batch_size):
         y = Y[n:n+batch_size,:]
         yield x,y
         
-#batches = get_batches(X_train, y_train, n_steps, n_input)
-#x, y = next(batches)
 
 def load_data(dataset, forecast_steps, dir_data, seq_len):
     if dataset == 'DP':
@@ -77,13 +75,13 @@ def build_rnn(rnn_size, num_layers, batch_size, num_steps, keep_prob, c_k):
 
     '''
     # build an rnn unit
-    cell = c_k_RNNCell(rnn_size, c_k)
+    cell = DSRNNCell(rnn_size, c_k)
 #    cell = forget_cell(rnn_size, c_k)
     
     # adding dropout
 #    cell = tf.nn.rnn_cell.DropoutWrapper(cell, output_keep_prob=keep_prob)
     
-#    rnn2 = c_k_RNNCell(rnn_size)
+#    rnn2 = DSRNNCell(rnn_size)
 #    drop2 = tf.contrib.rnn.DropoutWrapper(rnn2, output_keep_prob=keep_prob)
 #    stack_rnn = [drop]
 #    for _ in range(num_layers-1):
@@ -116,12 +114,7 @@ def build_output(rnn_output , in_size, out_size, dataset, c_k):
     # compute logits
     logits = tf.matmul(rnn_output, softmax_w) + softmax_b
     
-    if dataset == 'Lorentz_C':
-        # softmax return
-        out = tf.nn.softmax(logits, name='predictions')
-        logits=out
-    else:
-        out = logits
+    out = logits
     
     
     return out, logits
