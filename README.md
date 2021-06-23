@@ -2,7 +2,7 @@ This repository contains implementations for the dynamically stabilized recurren
 
 This novel recurrent neural network (RNN) architecture includes learnable skip-connections across a specified number of time-steps, which allows for a state-space representation of the network’s hidden-state trajectory, and introduces a regularization term in the loss function by utilizing the Lyapunov stability theory. The regularizer enables placement of eigenvalues of the (linearized) transfer function matrix to desired locations in the complex plane, thereby acting as an internal controller for the hidden-state trajectories.
 
-**Experiment**
+# Experiment
 
 The dataset used to validate the DSRNN is of a recorded double pendulum experiment, which is a chaotic system that exhibits behavior of long-term unpredictability. The results show that the DSRNN outperforms both the Long Short-Term Memory (LSTM) and vanilla recurrent neural networks, and the relative mean-squared error of the LSTM is reduced by up to ~99.64%. 
 
@@ -17,13 +17,13 @@ The figure above shows the average test errors over the five independent runs re
 ![visual_of_errors_per_joint](https://user-images.githubusercontent.com/44982976/122838319-d5a8d780-d2c3-11eb-8901-807a72de69f3.png)
 The figure above is a visualization of the predicted locations of the dynamic joints of the double pendulum at three different instances by the DSRNN with k=3 and the LSTM. The highlighted regions corresponding to each recurrent network architecture are centered around the average prediction for each joint, corresponding to every {1, 5, 10, 15, 20} time-step prediction, T. The height and width of the circular regions are proportional in magnitude to 1 standard deviation of the x and y error predictions.
 
-**Dataset**
+# Dataset
 
 The dataset can be found in the following reference:
     Asseman, A., T. Kornuta, and A. Ozcan (2018) “Learning beyond simulated physics,” in Modeling and Decision-making in the Spatiotemporal Domain Workshop.
     URL https://openreview.net/forum?id=HylajWsRF7
 
-**How to Execute Code**
+# How to Execute Codes
 
 The DSRNN cell can be found in the file "dsrnn.py", which is used to design the DSRNN in file "DSRNN_class.py", which is run and trained in the file "main_DSRNN.py". All supplemental functions used can be found in the file "sup_functions.py". 
 
